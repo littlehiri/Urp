@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using TMPro;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.EventSystems;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
@@ -20,6 +24,12 @@ namespace StarterAssets
 		public float RotationSpeed = 1.0f;
 		[Tooltip("Acceleration and deceleration")]
 		public float SpeedChangeRate = 10.0f;
+		//[Header("Slope Handing")]
+		//public float maxSlopeAngle;
+		//private RaycastHit slopeHit;
+
+		//Vector3 moveDirection;
+		//Rigidbody rb;
 
 		[Space(10)]
 		[Tooltip("The height the player can jump")]
@@ -110,8 +120,46 @@ namespace StarterAssets
 			_fallTimeoutDelta = FallTimeout;
 		}
 
+		Action OnNextDrawGizmos;
+        private void OnDrawGizmos()
+        {
+            OnNextDrawGizmos?.Invoke();
+			OnNextDrawGizmos = null;
+        }
+
+		//void UpdateSlopeSliding()
+		//{
+		//	if (Grounded)
+		//	{
+		//		var sphereCastverticalOffset = _controller.height / 2 - _controller.radius;
+		//		var castOrigin = transform.position - new Vector3(0, sphereCastverticalOffset, 0);
+
+		//		if (Physics.SphereCast(castOrigin, _controller.radius - .01f, Vector3.down,
+		//			out var hit, .05f, ~LayerMask.GetMask("Player"), QueryTriggerInteraction.Ignore))
+		//		{
+		//			var collider = hit.collider;
+		//			var angle = Vector3.Angle(Vector3.up, hit.normal);
+		//			Debug.DrawLine(hit.point, hit.point + hit.normal, Color.black, 3f);
+		//			OnNextDrawGizmos += () =>
+		//			{
+		//				GUI.color = Color.yellow;
+		//				Handles.Label(transform.position + new Vector3(0, 2f, 0), "Angle: " + angle.ToString());
+		//			};
+		//			if (angle > _controller.slopeLimit)
+		//			{
+		//				var normal = hit.normal;
+		//				var yInverse = 1f - normal.y;
+		//				_verticalVelocity += yInverse * normal.x;
+		//				 += yInverse * normal.z;
+
+		//			}
+		//		}
+		//	}
+		//}
+
 		private void Update()
 		{
+			//UpdateSlopeSliding();
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
@@ -155,6 +203,12 @@ namespace StarterAssets
 		{
 			// set target speed based on move speed, sprint speed and if sprint is pressed
 			float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+
+			//// on Slope
+			//if (OnSlope())
+			//{
+			//	rb.AddForce(GetSlopeMoveDirection() * MoveSpeed * 20f, ForceMode.Force);
+			//}
 
 			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
@@ -264,5 +318,21 @@ namespace StarterAssets
 			// when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
 			Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z), GroundedRadius);
 		}
+
+		//private bool OnSlope()
+		//{
+		//	if(Physics.Raycast(transform.position, Vector3.down, out slopeHit, _controller.height * 0.5f + 0.3f))
+		//	{
+		//		float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
+		//		return angle < maxSlopeAngle && angle != 0;
+		//	}
+
+		//	return false;
+		//}
+
+		//private Vector3 GetSlopeMoveDirection()
+		//{
+		//	return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
+		//}
 	}
 }
