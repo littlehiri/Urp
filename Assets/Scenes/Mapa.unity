@@ -279,7 +279,7 @@ GameObject:
   - component: {fileID: 25728377}
   - component: {fileID: 25728376}
   - component: {fileID: 25728375}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16210,7 +16210,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &688254957
 RectTransform:
   m_ObjectHideFlags: 0
@@ -34076,6 +34076,24 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1563526875 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
+    type: 3}
+  m_PrefabInstance: {fileID: 1865871248}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1563526882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563526875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dfcc182e214a824787a8cf91c75ed1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1569096828
 GameObject:
   m_ObjectHideFlags: 0
@@ -38788,7 +38806,7 @@ GameObject:
   - component: {fileID: 1763949638}
   - component: {fileID: 1763949637}
   - component: {fileID: 1763949636}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP) (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40677,7 +40695,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1789894704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40761,7 +40779,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 479
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -42883,7 +42901,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
+        type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 1563526882}
   m_SourcePrefab: {fileID: 100100000, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
 --- !u!1 &1871607622
 GameObject:
@@ -49186,6 +49208,7 @@ SceneRoots:
   - {fileID: 1586689366}
   - {fileID: 1554303644}
   - {fileID: 1865871248}
+  - {fileID: 1789894707}
   - {fileID: 258634956}
   - {fileID: 545754539}
   - {fileID: 59977326}
@@ -49208,7 +49231,6 @@ SceneRoots:
   - {fileID: 1006576036}
   - {fileID: 1571000752}
   - {fileID: 1769995969}
-  - {fileID: 1789894707}
   - {fileID: 2142978725}
   - {fileID: 319544621}
   - {fileID: 911780511}
